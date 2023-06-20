@@ -3,6 +3,11 @@
 This is a mobile application developed using Flutter that allows users to order food from various restaurants for delivery.
 
 ## Features
+### This project contains following apps and web application.
+- Seller App
+- Rider App
+- User App
+- Admin web Portal
 ## Seller App
 - Seller registration and authentication
 - Manage Profile
