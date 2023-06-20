@@ -3,12 +3,36 @@
 This is a mobile application developed using Flutter that allows users to order food from various restaurants for delivery.
 
 ## Features
-
+## Seller App
+- Seller registration and authentication
+- Manage Profile
+- Browse restaurants and menus
+- Add Menu and Menu Items
+- Delete Menu and Menu Items
+- Accept Order
+- Place orders for delivery
+- Track order status
+- Browse History
+- Browse Total Earning
+## User App
 - User registration and authentication
 - Browse restaurants and menus
 - Add items to the cart
+- Add Address(Live Location) 
 - Place orders for delivery
 - Track order status
+- Browse History
+## Rider App
+- Rider registration and authentication
+- Manage Profile
+- Browse New Orders
+- Accept Order
+- Browse Not Delivered Orders
+- Browse To Be Delivered Orders
+- Track order status
+- Browse History
+- Browse Total Earning
+
 
 ## Screenshots
 
