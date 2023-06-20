@@ -22,7 +22,7 @@ Include some screenshots of your app here to give users a visual preview.
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/your-username/food-delivery-app.git](https://github.com/IPH-Technologies-Pvt-Ltd/I-Eat-Delivery-App-Flutter)
+git clone https://github.com/IPH-Technologies-Pvt-Ltd/I-Eat-Delivery-App-Flutter
 ```
 
 2. Change to the project directory:
