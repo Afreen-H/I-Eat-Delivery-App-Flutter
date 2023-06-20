@@ -32,7 +32,11 @@ This is a mobile application developed using Flutter that allows users to order 
 - Track order status
 - Browse History
 - Browse Total Earning
-
+## Admin web portal
+- Admin registration and authentication
+- Block/Unblock User Account
+- Block/Unblock Seller Account
+- Block/Unblock Rider Account 
 
 ## Screenshots
 
