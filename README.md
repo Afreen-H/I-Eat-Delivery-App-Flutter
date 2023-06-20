@@ -1,9 +1,5 @@
 # I-Eat-Delivery-App-Flutter
 
-Sure! Here's an example README.md file for a food delivery app developed using Flutter:
-
-# Food Delivery App
-
 This is a mobile application developed using Flutter that allows users to order food from various restaurants for delivery.
 
 ## Features
