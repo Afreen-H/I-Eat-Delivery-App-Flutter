@@ -72,6 +72,11 @@ flutter pub get
 ```bash
 flutter run
 ```
+5. Run the web application:
+
+```bash
+flutter run -d chrome or select device chrome and and run, flutter run command
+```
 
 Make sure you have Flutter and Dart installed on your development machine.
 
