@@ -9,9 +9,6 @@ This is a mobile application developed using Flutter that allows users to order 
 - Add items to the cart
 - Place orders for delivery
 - Track order status
-- Payment integration
-- User ratings and reviews
-- Notifications for order updates
 
 ## Screenshots
 
@@ -28,7 +25,7 @@ git clone https://github.com/IPH-Technologies-Pvt-Ltd/I-Eat-Delivery-App-Flutter
 2. Change to the project directory:
 
 ```bash
-cd food-delivery-app
+cd I-Eat-Delivery-App-Flutter
 ```
 
 3. Install dependencies:
