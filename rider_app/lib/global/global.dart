@@ -8,3 +8,7 @@ FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 Position? position;
 String completeAddress = "";
 List<Placemark>? placeMarks;
+
+String perParcelDeliveryAmount="";
+String previousEarnings="";//sellers previous earnings
+String previousRidersEarnings="";//riders previous earnings

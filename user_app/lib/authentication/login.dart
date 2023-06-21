@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:user_app/authentication/auth_screen.dart';
 import 'package:user_app/global/global.dart';
 import 'package:user_app/widgets/error_Dialog.dart';
@@ -72,19 +73,30 @@ class _LoginScreenState extends State<LoginScreen> {
         .get()
         .then((snapshot) async {
       if (snapshot.exists) {
-        await sharedPreferences!.setString("uid", currentUser.uid);
-        await sharedPreferences!.setString("email", snapshot.data()!["email"]);
-        await sharedPreferences!.setString("name", snapshot.data()!["name"]);
-        await sharedPreferences!.setString("photo", snapshot.data()!["photo"]);
+        if (snapshot.data()!["status"] == "Approved") {
+          await sharedPreferences!.setString("uid", currentUser.uid);
+          await sharedPreferences!
+              .setString("email", snapshot.data()!["email"]);
+          await sharedPreferences!.setString("name", snapshot.data()!["name"]);
+          await sharedPreferences!
+              .setString("photo", snapshot.data()!["photo"]);
 
-        List<String> userCartList = snapshot.data()!["userCart"].cast<String>();
-        await sharedPreferences!.setStringList("userCart", userCartList);
+          List<String> userCartList =
+              snapshot.data()!["userCart"].cast<String>();
+          await sharedPreferences!.setStringList("userCart", userCartList);
 
-        // ignore: use_build_context_synchronously
-        Navigator.pop(context);
-        // ignore: use_build_context_synchronously
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+          // ignore: use_build_context_synchronously
+          Navigator.pop(context);
+          // ignore: use_build_context_synchronously
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
+        } else {
+          firebaseAuth.signOut();
+          Navigator.pop(context);
+          Fluttertoast.showToast(
+              msg:
+                  "Admin has Blocked your account \n\n Mail to:admin@gmail.com");
+        }
       } else {
         firebaseAuth.signOut();
         Navigator.pop(context);
@@ -141,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
               formValidation();
             },
             style: ElevatedButton.styleFrom(
-                primary: Colors.purple,
+                primary: Colors.pink.shade300,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             child: const Text(

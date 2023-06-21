@@ -1,3 +1,9 @@
+---
+noteId: "719a5c10100011ee82e4e10c8d539601"
+tags: []
+
+---
+
 # Launch Screen Assets
 
 You can customize the launch screen with your own desired assets by replacing the image files in this directory.

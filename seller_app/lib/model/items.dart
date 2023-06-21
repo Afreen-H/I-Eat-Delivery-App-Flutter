@@ -27,6 +27,7 @@ class Items {
   Items.fromJson(Map<String, dynamic> json) {
     menuId = json['menuId'];
     sellerUID = json['sellerUID'];
+    itemId=json['itemId'];
     title = json['title'];
     shortInfo = json['shortInfo'];
     // publishedDate = json['publishedDate'];
@@ -41,6 +42,7 @@ class Items {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['menuId'] = menuId;
     data['sellerUID'] = sellerUID;
+    data['itemId']=itemId;
     data['title'] = title;
 
     data['shortInfo'] = shortInfo;

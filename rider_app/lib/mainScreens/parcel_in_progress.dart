@@ -6,6 +6,7 @@ import 'package:rider_app/widgets/progress_bar.dart';
 import 'package:rider_app/widgets/simple_Appbar.dart';
 
 import '../assistant_methods/assistant_methods.dart';
+import '../global/global.dart';
 import '../widgets/order_card.dart';
 
 class ParcelInProgress extends StatefulWidget {
@@ -26,8 +27,8 @@ class _ParcelInProgressState extends State<ParcelInProgress> {
         body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection("orders")
+              .where("riderUID", isEqualTo: sharedPreferences!.getString("uid"))
               .where("status", isEqualTo: "picking")
-              .orderBy("orderTime", descending: true)
               .snapshots(),
           builder: (c, snapshot) {
             return snapshot.hasData
@@ -41,9 +42,7 @@ class _ParcelInProgressState extends State<ParcelInProgress> {
                                 whereIn: separateOrderItemIds(
                                     (snapshot.data?.docs[index].data()
                                         as Map<String, dynamic>)["productIds"]))
-                            .where("orderedBy",
-                                whereIn: (snapshot.data?.docs[index].data()
-                                    as Map<String, dynamic>)["uid"])
+                            
                             .orderBy("publishedDate", descending: true)
                             .get(),
                         builder: (c, snap) {

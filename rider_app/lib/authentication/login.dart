@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rider_app/authentication/auth_screen.dart';
 import 'package:rider_app/global/global.dart';
 import 'package:rider_app/widgets/loading_dialog.dart';
@@ -73,18 +74,26 @@ class _LoginScreenState extends State<LoginScreen> {
         .get()
         .then((snapshot) async {
       if (snapshot.exists) {
-        await sharedPreferences!.setString("uid", currentUser.uid);
-        await sharedPreferences!
-            .setString("email", snapshot.data()!["riderEmail"]);
-        await sharedPreferences!
-            .setString("name", snapshot.data()!["riderName"]);
-        await sharedPreferences!
-            .setString("PhotoUrl", snapshot.data()!["riderAvtar"]);
-        // ignore: use_build_context_synchronously
-        Navigator.pop(context);
-        // ignore: use_build_context_synchronously
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+        if (snapshot.data()!["status"] == "Approved") {
+          await sharedPreferences!.setString("uid", currentUser.uid);
+          await sharedPreferences!
+              .setString("email", snapshot.data()!["riderEmail"]);
+          await sharedPreferences!
+              .setString("name", snapshot.data()!["riderName"]);
+          await sharedPreferences!
+              .setString("PhotoUrl", snapshot.data()!["riderAvtar"]);
+          // ignore: use_build_context_synchronously
+          Navigator.pop(context);
+          // ignore: use_build_context_synchronously
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
+        } else {
+          firebaseAuth.signOut();
+          Navigator.pop(context);
+          Fluttertoast.showToast(
+              msg:
+                  "Admin has Blocked your account \n\n Mail to:admin@gmail.com");
+        }
       } else {
         firebaseAuth.signOut();
         Navigator.pop(context);
@@ -142,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
               formValidation();
             },
             style: ElevatedButton.styleFrom(
-                primary: Colors.purple,
+                primary: Colors.redAccent.shade100,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             child: const Text(
